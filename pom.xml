@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.sonarsource.license-headers</groupId>
+  <artifactId>license-headers</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>SonarSource :: License Headers</name>
+  <url>http://www.sonarsource.com</url>
+  
+  <organization>
+    <name>SonarSource</name>
+    <url>http://www.sonarsource.com</url>
+  </organization>
+<!--
+  <scm>
+    <connection>scm:git:git@github.com:SonarSource/parent.git</connection>
+    <developerConnection>scm:git:git@github.com:SonarSource/parent.git</developerConnection>
+    <url>https://github.com/SonarSource/parent</url>
+    <tag>HEAD</tag>
+  </scm>
+  <issueManagement>
+    <system>jira</system>
+    <url>http://jira.sonarsource.com/</url>
+  </issueManagement>
+  <distributionManagement>
+    <repository>
+      <id>sonarsource-releases</id>
+      <name>SonarSource releases</name>
+      <url>http://nexus-master.internal.sonarsource.com/nexus/content/repositories/sonarsource-releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>${sonar.snapshotRepository.id}</id>
+      <name>Sonar plugins snapshot repository</name>
+      <uniqueVersion>false</uniqueVersion>
+      <url>${sonar.snapshotRepository.url}</url>
+    </snapshotRepository>
+  </distributionManagement>
+-->
+
+</project>
