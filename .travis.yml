@@ -1,0 +1,11 @@
+language: java
+sudo: false
+jdk: oraclejdk7
+script: mvn verify -B -e -V
+
+cache:
+  directories:
+    - $HOME/.m2/repository
+
+notifications:
+  email: false
