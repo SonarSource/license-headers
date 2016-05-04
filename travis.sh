@@ -8,4 +8,6 @@ function installTravisTools {
   source ~/.local/bin/install
 }
 
+installTravisTools
+
 regular_mvn_build_deploy_analyze
