@@ -7,7 +7,7 @@
   </parent>
   <groupId>org.sonarsource.license-headers</groupId>
   <artifactId>license-headers</artifactId>
-  <version>1.3</version>
+  <version>1.4-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>SonarSource :: License Headers</name>
   <description>Templates of source file headers for SonarSource projects. Used by parent pom.</description>
@@ -45,7 +45,7 @@
     <connection>scm:git:git@github.com:SonarSource/license-headers.git</connection>
     <developerConnection>scm:git:git@github.com:SonarSource/license-headers.git</developerConnection>
     <url>https://github.com/SonarSource/license-headers</url>
-    <tag>1.3</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <issueManagement>
