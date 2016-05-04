@@ -12,6 +12,10 @@
   <name>SonarSource :: License Headers</name>
   <description>Templates of source file headers for SonarSource projects. Used by parent pom.</description>
   <url>http://www.sonarsource.com</url>
+
+  <properties>
+    <gitRepositoryName>license-headers</gitRepositoryName>
+  </properties>
   
   <organization>
     <name>SonarSource</name>
