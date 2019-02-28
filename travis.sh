@@ -9,6 +9,7 @@ function installTravisTools {
 }
 
 installTravisTools
+. installJDK8
 
 . set_maven_build_version $TRAVIS_BUILD_NUMBER
 

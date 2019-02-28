@@ -1,6 +1,5 @@
 language: java
 sudo: false
-jdk: oraclejdk7
 script: ./travis.sh
 
 cache:
