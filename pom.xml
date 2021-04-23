@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.sonarsource.parent</groupId>
     <artifactId>parent</artifactId>
-    <version>31</version>
+    <version>58.0.22</version>
   </parent>
   <groupId>org.sonarsource.license-headers</groupId>
   <artifactId>license-headers</artifactId>
