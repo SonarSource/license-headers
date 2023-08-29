@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.sonarsource.parent</groupId>
     <artifactId>parent</artifactId>
-    <version>59.0.29</version>
+    <version>68.0.0.247</version>
   </parent>
   <groupId>org.sonarsource.license-headers</groupId>
   <artifactId>license-headers</artifactId>
@@ -11,21 +11,22 @@
   <packaging>jar</packaging>
   <name>SonarSource :: License Headers</name>
   <description>Templates of source file headers for SonarSource projects. Used by parent pom.</description>
-  <url>http://www.sonarsource.com</url>
+  <url>https://www.sonarsource.com</url>
 
   <properties>
     <gitRepositoryName>license-headers</gitRepositoryName>
+    <sonar.organization>sonarsource</sonar.organization>
   </properties>
   
   <organization>
     <name>SonarSource</name>
-    <url>http://www.sonarsource.com</url>
+    <url>https://www.sonarsource.com</url>
   </organization>
 
   <licenses>
     <license>
       <name>GNU LGPL 3</name>
-      <url>http://www.gnu.org/licenses/lgpl.txt</url>
+      <url>https://www.gnu.org/licenses/lgpl.txt</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
