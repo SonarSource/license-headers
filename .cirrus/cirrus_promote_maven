@@ -86,8 +86,11 @@ else
 
             if [ ${CIRRUS_CI:-false} == "true" ]; then
               # cirrus advice
-echo "\nTips: Have a look in
- https://github.com/SonarSource/re-terraform-aws-vault/tree/master/orders yaml files.
+echo "\nTips:
+
+1) Check the vault policy for this repository in
+
+  https://github.com/SonarSource/re-terraform-aws-vault/tree/master/orders
 
   The vault policy of this repository should contains the following declarations:
 
@@ -107,12 +110,13 @@ echo "\nTips: Have a look in
     description: add a github check containing the build version to the current commit (required by cirrus_promote_maven)
     permissions: {statuses: write}
 
-  and then declare the GITHUB_TOKEN as following:
+2) Check the .cirrus.yml file:
+
+  The token should be declared this way:
 
   GITHUB_TOKEN: VAULT[development/github/token/\${CIRRUS_REPO_OWNER}-\${CIRRUS_REPO_NAME}-promotion token]
 "
             fi
-
         fi
 
         exit 1 # This is an issue -> fail fast
