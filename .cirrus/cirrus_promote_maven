@@ -84,7 +84,7 @@ else
 
         if [ "$http_response" == "401" ]; then
                 echo "Bad credentials 401"
-        endif
+        fi
     fi
 fi
 
