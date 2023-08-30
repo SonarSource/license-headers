@@ -83,18 +83,21 @@ else
 
         if [ "$http_response" == "401" ]; then
             # bad credentials
-            echo "\tIf you are using Vault, please considere having a look in
-            https://github.com/SonarSource/re-terraform-aws-vault/tree/master/orders
 
-            The vault policy of this repository must contains the following declarations:
+            if [ ${CIRRUS_CI:-false} == "true" ]; then
+              # cirrus advice
+echo "\tIf you are retrieving the GITHUB_TOKEN with Vault, please considere having a look in
+ https://github.com/SonarSource/re-terraform-aws-vault/tree/master/orders yaml files.
 
-            $GITHUB_REPO_SHORTNAME:
+            The vault policy of this repository should contains the following declarations:
+
+            $CIRRUS_REPO_NAME:
               secrets:
                 github:
                   presets: [default]
                   customs:
                     - <<: *github_promotion
-                      repositories: [$GITHUB_REPO_SHORTNAME]
+                      repositories: [$CIRRUS_REPO_NAME]
 
             and
 
@@ -103,7 +106,13 @@ else
               suffix: promotion
               description: add a github check containing the build version to the current commit (required by cirrus_promote_maven)
               permissions: {statuses: write}
+
+            and then declare the GITHUB_TOKEN as following:
+
+            GITHUB_TOKEN: VAULT[development/github/token/\${CIRRUS_REPO_OWNER}-\${CIRRUS_REPO_NAME}-promotion token]
 "
+            fi
+
         fi
 
         exit 1 # This is an issue -> fail fast
