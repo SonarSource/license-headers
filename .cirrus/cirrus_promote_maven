@@ -77,14 +77,25 @@ else
         echo "done"
     else
         # handle error
-        echo "Could not add github commit status with build number."
-        echo "Something went wrong:"
+        echo "Could not add github commit status with build number $BUILD_NUMBER."
         echo "GitHub REST server responded with $http_response:"
         cat response.txt
 
         if [ "$http_response" == "401" ]; then
-                echo "Bad credentials 401"
+            # bad credentials
+            echo "\tIf you are using Vault, please considere having a look in the vault policy of this repository and check that this part is present:
+
+            $GITHUB_REPO:
+              secrets:
+                github:
+                  presets: [default]
+                  customs:
+                    - <<: *github_promotion
+                      repositories: [$GITHUB_REPO]
+"
         fi
+
+        exit 1 # This is an issue -> fail fast
     fi
 fi
 
