@@ -54,7 +54,7 @@ promote_task:
     cpu: 0.5
     memory: 500M
   env:
-    GITHUB_TOKEN: VAULT[development/github/token/${CIRRUS_REPO_OWNER}-${CIRRUS_REPO_NAME}-promotion token]
+    GITHUB_TOKEN: somethingwrong
     # promotion cloud function
     GCF_ACCESS_TOKEN: VAULT[development/kv/data/promote data.token]
     PROMOTE_URL: VAULT[development/kv/data/promote data.url]
