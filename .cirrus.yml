@@ -66,5 +66,5 @@ promote_task:
   maven_cache:
     folder: ${CIRRUS_WORKING_DIR}/.m2/repository
   script:
-    - cirrus_promote_maven
+    - .cirrus/cirrus_promote_maven
   cleanup_before_cache_script: cleanup_maven_repository
