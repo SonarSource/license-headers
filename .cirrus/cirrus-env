@@ -1,0 +1,57 @@
+#!/bin/bash
+
+set +o verbose
+set -euo pipefail
+
+# generic environment variables used by Gradle build
+export GIT_SHA1=$CIRRUS_CHANGE_IN_REPO
+export GITHUB_BASE_BRANCH=${CIRRUS_BASE_BRANCH:-}
+export GITHUB_BRANCH=$CIRRUS_BRANCH
+export GITHUB_REPO=${CIRRUS_REPO_FULL_NAME}
+export GITHUB_REPO_SHORTNAME=${CIRRUS_REPO_NAME}
+export PROJECT=${CIRRUS_REPO_NAME}
+export PULL_REQUEST=${CIRRUS_PR:-false}
+export PULL_REQUEST_SHA=${CIRRUS_BASE_SHA:-}
+# used by burgr to identify stages of the pipeline
+export PIPELINE_ID=${CIRRUS_BUILD_ID}
+
+export LANG=C.UTF-8
+
+FUNCTION_URL=https://us-central1-ci-cd-215716.cloudfunctions.net
+cirrusBuildNumber() {
+  curl --retry 10 --retry-connrefused --retry-max-time 60 -sfSL -H "Content-Length: 0" -H "Authorization: Bearer ABCDE" "${FUNCTION_URL}/cirrusBuildNumber/$CIRRUS_REPO_FULL_NAME/$CIRRUS_BUILD_ID" "$@"
+}
+
+TASK_TYPE=$1
+if [[ "$TASK_TYPE" == "BUILD"* ]]; then
+  BUILD_NUMBER=$(cirrusBuildNumber -X POST)
+else
+  BUILD_NUMBER=$(cirrusBuildNumber)
+  export SONARSOURCE_QA=true
+fi
+export BUILD_NUMBER
+export BUILD_ID=${BUILD_NUMBER}
+
+if [[ "${GITHUB_TOKEN:-}" == "ENCRYPTED"* ]]; then
+  echo "Unsetting GITHUB_TOKEN"
+  unset GITHUB_TOKEN
+fi
+
+M2_SOURCE=~/.m2
+if [ -f "/c/buildTools-docker/mvn/settings-public.xml" ]; then
+  # /c/buildTools-docker/mvn is populated during Windows image creation
+  M2_SOURCE=/c/buildTools-docker/mvn
+fi
+
+[ ! -d ~/.m2 ] && mkdir ~/.m2
+if [[ "$TASK_TYPE" == *"-PRIVATE" || "$TASK_TYPE" == "QA"* || "$TASK_TYPE" == "PROMOTE"* ]]; then
+  cp ${M2_SOURCE}/settings-private.xml ~/.m2/settings.xml
+else
+  cp ${M2_SOURCE}/settings-public.xml ~/.m2/settings.xml
+fi
+
+case $BUILD_ID in
+    ''|*[!0-9]*) echo "$BUILD_ID is not a number" && exit 1 ;;
+esac
+
+set -o verbose

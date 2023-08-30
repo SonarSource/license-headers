@@ -83,15 +83,26 @@ else
 
         if [ "$http_response" == "401" ]; then
             # bad credentials
-            echo "\tIf you are using Vault, please considere having a look in the vault policy of this repository and check that this part is present:
+            echo "\tIf you are using Vault, please considere having a look in
+            https://github.com/SonarSource/re-terraform-aws-vault/tree/master/orders
 
-            $GITHUB_REPO:
+            The vault policy of this repository must contains the following declarations:
+
+            $GITHUB_REPO_SHORTNAME:
               secrets:
                 github:
                   presets: [default]
                   customs:
                     - <<: *github_promotion
-                      repositories: [$GITHUB_REPO]
+                      repositories: [$GITHUB_REPO_SHORTNAME]
+
+            and
+
+            github_promotion: &github_promotion
+              organization: SonarSource
+              suffix: promotion
+              description: add a github check containing the build version to the current commit (required by cirrus_promote_maven)
+              permissions: {statuses: write}
 "
         fi
 
