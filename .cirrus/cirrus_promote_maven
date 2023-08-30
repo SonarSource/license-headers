@@ -77,8 +77,8 @@ else
         echo "done"
     else
         # handle error
-        echo "Could not add github commit status with build number $BUILD_NUMBER."
-        echo "GitHub REST server responded with $http_response:"
+        echo "Could not add github commit status for build number $BUILD_NUMBER."
+        echo "Cause: GitHub API responded with $http_response:"
         cat response.txt
 
         if [ "$http_response" == "401" ]; then
@@ -86,7 +86,9 @@ else
 
             if [ ${CIRRUS_CI:-false} == "true" ]; then
               # cirrus advice
-echo "\nTips:
+echo "
+
+Tips:
 
 1) Check the vault policy for this repository in
 
