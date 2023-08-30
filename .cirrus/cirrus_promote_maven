@@ -86,30 +86,30 @@ else
 
             if [ ${CIRRUS_CI:-false} == "true" ]; then
               # cirrus advice
-echo "\tIf you are retrieving the GITHUB_TOKEN with Vault, please considere having a look in
+echo "\nTips: Have a look in
  https://github.com/SonarSource/re-terraform-aws-vault/tree/master/orders yaml files.
 
-            The vault policy of this repository should contains the following declarations:
+  The vault policy of this repository should contains the following declarations:
 
-            $CIRRUS_REPO_NAME:
-              secrets:
-                github:
-                  presets: [default]
-                  customs:
-                    - <<: *github_promotion
-                      repositories: [$CIRRUS_REPO_NAME]
+  $CIRRUS_REPO_NAME:
+    secrets:
+      github:
+        presets: [default]
+        customs:
+          - <<: *github_promotion
+            repositories: [$CIRRUS_REPO_NAME]
 
-            and
+  and
 
-            github_promotion: &github_promotion
-              organization: SonarSource
-              suffix: promotion
-              description: add a github check containing the build version to the current commit (required by cirrus_promote_maven)
-              permissions: {statuses: write}
+  github_promotion: &github_promotion
+    organization: SonarSource
+    suffix: promotion
+    description: add a github check containing the build version to the current commit (required by cirrus_promote_maven)
+    permissions: {statuses: write}
 
-            and then declare the GITHUB_TOKEN as following:
+  and then declare the GITHUB_TOKEN as following:
 
-            GITHUB_TOKEN: VAULT[development/github/token/\${CIRRUS_REPO_OWNER}-\${CIRRUS_REPO_NAME}-promotion token]
+  GITHUB_TOKEN: VAULT[development/github/token/\${CIRRUS_REPO_OWNER}-\${CIRRUS_REPO_NAME}-promotion token]
 "
             fi
 
