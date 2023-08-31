@@ -84,8 +84,9 @@ else
         if [ "$http_response" == "401" ]; then
             # bad credentials
 
-            if [ ${CIRRUS_CI:-false} == "true" ]; then
+            if [ "${CIRRUS_CI:-false}" == "true" ]; then
               # cirrus advice
+              REPOSITORY_SHORTNAME=${CIRRUS_REPO_NAMEWRONG:-"REPOSITORY_NAME"}
 echo "
 
 Tips:
@@ -96,13 +97,13 @@ Tips:
 
   The vault policy of this repository should contains the following declarations:
 
-  $CIRRUS_REPO_NAME:
+  $REPOSITORY_SHORTNAME
     secrets:
       github:
         presets: [default]
         customs:
           - <<: *github_promotion
-            repositories: [$CIRRUS_REPO_NAME]
+            repositories: [$REPOSITORY_SHORTNAME]
 
   and
 
