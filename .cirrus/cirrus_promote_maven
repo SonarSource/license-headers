@@ -86,7 +86,7 @@ else
 
             if [ "${CIRRUS_CI:-false}" == "true" ]; then
               # cirrus advice
-              REPOSITORY_SHORTNAME=${CIRRUS_REPO_NAMEWRONG:-"REPOSITORY_NAME"}
+              REPOSITORY_SHORTNAME=${CIRRUS_REPO_NAME:-"REPOSITORY_NAME"}
 echo "
 
 Tips:
@@ -122,7 +122,7 @@ Tips:
             fi
         fi
 
-        exit 1 # This is an issue -> fail fast
+        exit 1
     fi
 fi
 
