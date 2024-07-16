@@ -38,12 +38,9 @@ build_task:
     SIGN_KEY: VAULT[development/kv/data/sign data.key]
     PGP_PASSPHRASE: VAULT[development/kv/data/sign data.passphrase]
 
-  maven_cache:
-    folder: ${CIRRUS_WORKING_DIR}/.m2/repository
   build_script:
     - source cirrus-env BUILD
     - regular_mvn_build_deploy_analyze
-  cleanup_before_cache_script: cleanup_maven_repository
 
 promote_task:
   depends_on:
@@ -56,13 +53,5 @@ promote_task:
   env:
     GITHUB_TOKEN: VAULT[development/github/token/${CIRRUS_REPO_OWNER}-${CIRRUS_REPO_NAME}-promotion token]
     ARTIFACTORY_PROMOTE_ACCESS_TOKEN: VAULT[development/artifactory/token/${CIRRUS_REPO_OWNER}-${CIRRUS_REPO_NAME}-promoter access_token]
-    # artifacts that will have downloadable links in burgr
-    ARTIFACTS: org.sonarsource.license-headers:license-headers:jar
-    BURGR_URL: VAULT[development/kv/data/burgr data.url]
-    BURGR_USERNAME: VAULT[development/kv/data/burgr data.cirrus_username]
-    BURGR_PASSWORD: VAULT[development/kv/data/burgr data.cirrus_password]
-  maven_cache:
-    folder: ${CIRRUS_WORKING_DIR}/.m2/repository
   script:
     - cirrus_promote_maven
-  cleanup_before_cache_script: cleanup_maven_repository
