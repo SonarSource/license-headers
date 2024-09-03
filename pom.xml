@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.sonarsource.parent</groupId>
     <artifactId>parent</artifactId>
-    <version>70.0.0.270</version>
+    <version>77.0.0.2082</version>
   </parent>
   <groupId>org.sonarsource.license-headers</groupId>
   <artifactId>license-headers</artifactId>
@@ -54,28 +54,4 @@
     <url>https://github.com/SonarSource/license-headers/issues/</url>
   </issueManagement>
 
-  <build>
-    <plugins>
-      <plugin>
-        <!--
-        Javadoc and sources are required for deployment in maven central.
-        As this project has no sources, empty jars must be created.
-         -->
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>empty-javadoc-jar</id>
-            <phase>package</phase>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-            <configuration>
-              <classifier>javadoc</classifier>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
 </project>
