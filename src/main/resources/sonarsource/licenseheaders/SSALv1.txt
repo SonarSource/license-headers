@@ -1,3 +1,4 @@
+${license.title}
 Copyright (C) ${license.years} ${license.owner}
 ${license.mailto}
 
