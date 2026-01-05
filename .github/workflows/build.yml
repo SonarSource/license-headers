@@ -40,3 +40,5 @@ jobs:
       contents: write
     steps:
       - uses: SonarSource/ci-github-actions/promote@master # dogfood
+        with:
+          promote-pull-request: true
