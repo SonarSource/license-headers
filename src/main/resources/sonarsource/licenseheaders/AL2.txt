@@ -1,5 +1,5 @@
 ${license.title}
-Copyright (c) ${license.years} ${license.owner}
+Copyright (C) ${license.owner}
 ${license.mailto}
 
 Licensed under the Apache License, Version 2.0 (the "License");
