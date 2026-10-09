@@ -11,7 +11,7 @@
 
 # License header resources for Sonar projects
 
-This repository packages license header templates used by Sonar project builds, including LGPL, Apache, MIT, and Sonar Source-Available License templates. It is maintainer tooling for applying the appropriate header to source files.
+This repository packages the license header templates (LGPL, Apache, MIT, Sonar Source-Available License, and SonarSource) that the Sonar parent POM uses to apply the appropriate header to source files in Sonar project builds.
 
 To learn more about Sonar products, visit the [Sonar website](https://www.sonarsource.com/).
 
