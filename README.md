@@ -17,6 +17,8 @@ To learn more about Sonar products, visit the [Sonar website](https://www.sonars
 
 <!-- sonar-marketing:end -->
 
+Report non-security issues in the [GitHub issue tracker](https://github.com/SonarSource/license-headers/issues); report security vulnerabilities as described in [SECURITY.md](SECURITY.md).
+
 ### License
 
 Copyright 2008-2026 SonarSource Sàrl.
