@@ -17,6 +17,8 @@ To learn more about Sonar products, visit the [Sonar website](https://www.sonars
 
 <!-- sonar-marketing:end -->
 
+To run the test phase locally, run `mvn test` from the repository root; this repository currently has no test sources.
+
 ### License
 
 Copyright 2008-2026 SonarSource Sàrl.
